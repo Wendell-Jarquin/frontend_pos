@@ -4,8 +4,8 @@ export const ProductSchema = z.object({
     id: z.number(),
     name: z.string(),
     image: z.string(),
-    price: z.number(),
-    category: z.number(),
+    price: z.coerce.number(),
+    category: z.number().optional(),
     categoryId: z.number(),
 });
 
