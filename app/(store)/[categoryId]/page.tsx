@@ -1,14 +1,17 @@
 type Params = Promise<{ categoryId: string }>;
 
 async function getProducts(categoryId: string) {
-  console.log(categoryId);
+  const url = `${process.env.API_URL}/categories/${categoryId}?products=true`;
+  const req = await fetch(url);
+  const json = await req.json();
+  
 }
 
 
 export default async function CategoryPage({ params }: { params: Params }) {
   const { categoryId } = await params
 
-  await getProducts(categoryId);
+  const products = await getProducts(categoryId);
 
   return <div>StorePage</div>
 }

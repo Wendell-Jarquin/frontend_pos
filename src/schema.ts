@@ -1,0 +1,21 @@
+import { z } from "zod";
+
+export const ProductSchema = z.object({
+    id: z.number(),
+    name: z.string(),
+    image: z.string(),
+    price: z.number(),
+    category: z.number(),
+    categoryId: z.number(),
+});
+
+
+export const CategorySchema = z.object({
+    id: z.number(),
+    name: z.string(),
+});
+
+
+export const CategoryWithProductsResponseSchema = CategorySchema.extend({
+    products: z.array(ProductSchema),
+});
